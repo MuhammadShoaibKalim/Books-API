@@ -27,10 +27,12 @@ The server will start listening on port 8080 by default.
 Book titles must be at least 3 characters long. Validation is performed using Joi.
 
 ## Sample Requests
-### Get All Books
 
-### Get Book by ID
-### Create a New Book
+- Get All Books
+
+- Get Book by ID
+
+- Create a New Book
 
 ## Contributing
 Contributions are welcome! Please submit bug reports or feature requests via GitHub issues.
