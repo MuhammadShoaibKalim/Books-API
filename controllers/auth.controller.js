@@ -6,7 +6,7 @@ export const registerUser = async (req, res) => {
   try {
     const { name, email, password, age, role } = req.body;
 
-    if (!name || !email || !password || !age || !role) {
+    if (!name || !email || !password || !age ) {
       return res.status(400).json({ message: "All fields are required" });
     }
 
@@ -19,7 +19,7 @@ export const registerUser = async (req, res) => {
     const newUser = new User({ name, email, password: hashedPassword, age, role });
     await newUser.save();
 
-    const token = generateToken(newUser._id, newUser.role);
+    const token = accessToken(newUser._id, newUser.role);
     res.cookie("token", token, {
       httpOnly: true, 
       secure: true, 
