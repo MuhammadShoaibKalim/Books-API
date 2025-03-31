@@ -1,14 +1,13 @@
 import jwt from "jsonwebtoken";
 
-  export const authenticateUser = (req, res, next) => {
-    let token = req.header("Authorization");
-  
+   export const authenticateUser = (req, res, next) => {
+    let authHeader = req.headers["Authorization"];
+    const token = authHeader && authHeader.split(" ")[1];
     if (!token) {
-      return res.status(401).json({ message: "Access Denied: No Token Provided" });
-    }
-  
-    if (token.startsWith("Bearer ")) {
-      token = token.split(" ")[1];
+      return res.status(401).json({ 
+        success:false,
+        message: "Access Denied: No Token Provided" 
+      });
     }
   
     try {
@@ -19,7 +18,6 @@ import jwt from "jsonwebtoken";
       return res.status(401).json({ message: "Invalid Token", error: error.message });
     }
   };
-  
 
   export const isAdmin = (req, res, next) => {
     if (req.user.role !== "admin") {
