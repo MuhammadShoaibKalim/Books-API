@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
 import User from "../models/user.model.js";
-import generateToken from "../utils/generateToken.util.js";
+import accessToken from "../utils/generateToken.util.js";
 
 export const registerUser = async (req, res) => {
   try {
@@ -41,7 +41,7 @@ export const loginUser = async (req, res) => {
     const user = await User.findOne({ email });
     if (!user) return res.status(400).json({ 
         success:false,
-       message: "Invalid email or password"
+        message: "User does't exist"
      });
 
     const isMatch = await bcrypt.compare(password, user.password);
@@ -68,7 +68,6 @@ export const loginUser = async (req, res) => {
     res.status(500).json({ message: "Error logging in", error: error.message });
   }
 };
-
 
 export const logoutUser = async (req, res) => {
   try {
