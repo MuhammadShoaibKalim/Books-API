@@ -17,6 +17,30 @@ npm start
 ```
 The server will start listening on port `8080` by default.
 
+## Package mostly used/to install
+
+#### Express - Web framework
+npm install express
+
+#### Mongoose - MongoDB ODM
+npm install mongoose
+
+#### dotenv - Environment variable loader
+npm install dotenv
+
+#### jsonwebtoken - For JWT token generation/verification
+npm install jsonwebtoken
+
+#### bcryptjs - For password hashing
+npm install bcryptjs
+
+#### multer - For handling file uploads
+npm install multer
+
+#### cloudinary - For image/file storage in the cloud
+npm install cloudinary
+
+
 ## Endpoints
 ### Authentication
 - `POST /api/auth/register` - Register a new user.
